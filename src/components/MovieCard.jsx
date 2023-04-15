@@ -1,8 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Card, CardBody } from "@chakra-ui/react";
+import { IconPlus, IconTrash } from "@tabler/icons-react";
 
-export default function MovieCard({ title, img }) {
+export default function MovieCard({ title, img, id, handleFav, type, isFav }) {
   const imgUrl = "https://image.tmdb.org/t/p/original";
   return (
     <>
@@ -20,8 +21,25 @@ export default function MovieCard({ title, img }) {
               className="rounded-t-md"
             />
           </div>
-          <section className="px-4 py-5">
-            <h1>{title}</h1>
+          <section className="flex justify-between gap-4 px-4 py-5">
+            <h1 className="w-24">{title}</h1>
+            <div className="flex flex-col items-center gap-3">
+              {isFav ? (
+                <IconTrash
+                  width={"1.5rem"}
+                  height={"1.5rem"}
+                  className=" cursor-pointer"
+                  onClick={() => handleFav("DELETE", id, type)}
+                />
+              ) : (
+                <IconPlus
+                  width={"1.5rem"}
+                  height={"1.5rem"}
+                  className=" cursor-pointer"
+                  onClick={() => handleFav("POST", id, type)}
+                />
+              )}
+            </div>
           </section>
         </CardBody>
       </Card>
