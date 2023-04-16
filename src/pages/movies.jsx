@@ -135,7 +135,7 @@ export async function getServerSideProps({ req, res }) {
 
   // fetching data from next api
   const apiData = await fetch(
-    `${process.env.HOST_URL}/api/hello?email=${email}`
+    `${process.env.NEXTAUTH_URL}/api/hello?email=${email}`
   )
     .then((res) => res.json())
     .catch((error) => console.log(error));
