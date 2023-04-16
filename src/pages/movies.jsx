@@ -134,17 +134,17 @@ export async function getServerSideProps({ req, res }) {
     .catch((error) => console.log(error));
 
   // fetching data from next api
-  // const apiData = await fetch(
-  //   `${process.env.HOST_URL}/api/hello?email=${email}`
-  // )
-  //   .then((res) => res.json())
-  //   .catch((error) => console.log(error));
+  const apiData = await fetch(
+    `${process.env.HOST_URL}/api/hello?email=${email}`
+  )
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 
   return {
     props: {
       data: [
         { type: "Trending", dbList: trending.results },
-        // { type: "Your Favorite", dbList: apiData },
+        { type: "Your Favorite", dbList: apiData },
         { type: "Discover", dbList: discover.results },
         { type: "Now Playing", dbList: nowPlaying.results },
         { type: "Popular", dbList: popular.results },
